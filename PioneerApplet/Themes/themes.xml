@@ -1,0 +1,170 @@
+<themes>
+	<theme>
+		<name>Batman</name>
+		<background>batman.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>
+	<theme>
+		<name>Candle</name>
+		<background>candle.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Chocolate</name>
+		<background>chocolate.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Coalenscence</name>
+		<background>coalescence.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Downward Spiral</name>
+		<background>downward_spiral.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Empire</name>
+		<background>empire.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Evolution</name>
+		<background>evolution.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>
+	<theme>
+		<name>Flying Tree</name>
+		<background>flyingtree.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Glass Orbs</name>
+		<background>glassorbs.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Hope</name>
+		<background>hope.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Hydro Promo</name>
+		<background>hydropromo.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Intel Mac - Green</name>
+		<background>intelmac-green.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Light - Blue</name>
+		<background>light-blue.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Last Lagoon</name>
+		<background>lost-lagoon.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Lord of the Ring</name>
+		<background>lotr.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Loves Dying Ember</name>
+		<background>lovesdyingembers.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>lrg-903-x-10</name>
+		<background>lrg-903-x-10.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>		
+	<theme>
+		<name>Mustang</name>
+		<background>mustang.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Nebula</name>
+		<background>nebula.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Pathogen Collaboration</name>
+		<background>pathogen_collaboration.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Planet New York</name>
+		<background>planetnewyork.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Sci-Fi</name>
+		<background>scifi.png</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Space green</name>
+		<background>spacegreen.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Sunrise</name>
+		<background>sunrise.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Surface</name>
+		<background>surface.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Surface - Red</name>
+		<background>surface-red.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>Tomorrow's Evolution</name>
+		<background>tommorowsevolution.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+	<theme>
+		<name>We Create Worlds</name>
+		<background>we-create-worlds.jpg</background>
+		<forecolor>White</forecolor>
+		<backcolor>Transparent</backcolor>
+	</theme>	
+</themes>
