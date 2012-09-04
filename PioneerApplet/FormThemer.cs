@@ -26,7 +26,7 @@ namespace PioneerApplet {
 	}
 
 	class FormThemer {
-		List<Theme> themes = new List<Theme>();
+		List<Theme> _themes = new List<Theme>();
 
 		public FormThemer() {
 
@@ -36,7 +36,7 @@ namespace PioneerApplet {
 
 				foreach (XmlNode theme in xdoc["themes"]) {
 					try {
-						themes.Add(new Theme(
+						_themes.Add(new Theme(
 							theme["name"].InnerText,
 							theme["background"].InnerText,
 							theme["forecolor"].InnerText,
@@ -48,19 +48,19 @@ namespace PioneerApplet {
 			catch { }
 		}
 
-		public int NumThemes { get { return themes.Count; } }
+		public int NumThemes { get { return _themes.Count; } }
 
 		public Theme GetTheme(string name) {
-			return themes.FirstOrDefault(t => t.Name == name);
+			return _themes.FirstOrDefault(t => t.Name == name);
 		}
 
 		public Theme GetTheme(int idx) {
-			return themes[idx];
+			return _themes[idx];
 		}
 
 		public Theme GetTheme() {
 			Random r = new Random();
-			return themes[r.Next(themes.Count)];
+			return _themes[r.Next(_themes.Count)];
 		}
 
 	}
