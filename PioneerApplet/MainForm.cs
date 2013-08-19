@@ -1,9 +1,12 @@
-﻿using LgLcd;
-using PioneerAvrControlLib.Message;
+﻿using System.Linq;
+using System.Net;
+using System.Runtime.InteropServices;
+using LgLcd;
 using PioneerAvrControlLib;
 using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using PioneerAvrControlLib.DataSources;
 using Timer = System.Threading.Timer;
 
 namespace PioneerApplet {
@@ -11,12 +14,25 @@ namespace PioneerApplet {
 
 		public MainForm() {
 			InitializeComponent();
+
+			_conn = new PioneerConnection(new List<WritableDataSource> {
+					new TcpClientDataSource("10.31.45.25", 8102),
+					new TcpClientDataSource("10.31.45.25", 23),
+				});
+			_conn.ConnectionEstablished += (sender, args) => ReadCurrentSettings();
+
+			base.InitializeApplet();
+
 			Device.SetAsLCDForegroundApp(true);
 
 			if (!IsHandleCreated) CreateHandle();
 			_hotkey = new PioneerHooks(Device);
 			_hotkey.RegisterHotKey(KeyModifiers.None, Keys.VolumeUp);
 			_hotkey.RegisterHotKey(KeyModifiers.None, Keys.VolumeDown);
+			_hotkey.RegisterHotKey(KeyModifiers.Control, Keys.VolumeUp);
+			_hotkey.RegisterHotKey(KeyModifiers.Control, Keys.VolumeDown);
+			_hotkey.RegisterHotKey(KeyModifiers.Control | KeyModifiers.Alt, Keys.VolumeUp);
+			_hotkey.RegisterHotKey(KeyModifiers.Control | KeyModifiers.Alt, Keys.VolumeDown);
 			_hotkey.KeyPressed += HotkeyKeyPressed;
 
 			Device.Up += DeviceUp;
@@ -35,22 +51,35 @@ namespace PioneerApplet {
 			_switchableModes.Add(0x0118); // ADVANCED GAME
 		}
 
-		PioneerTCPConnection _conn = new PioneerTCPConnection("10.31.45.25");
-		PioneerHooks _hotkey;
+		readonly PioneerConnection _conn;
+		readonly PioneerHooks _hotkey;
 		InputType _lastInputType;
 		private Label _lblLine3;
-		Dictionary<string, string> _tunerPresetNames = new Dictionary<string, string>();
-		FormThemer _themer = new FormThemer();
+		readonly Dictionary<string, string> _tunerPresetNames = new Dictionary<string, string>();
+		readonly FormThemer _themer = new FormThemer();
 		Theme _currentTheme;
 		int _currentMode; // current listening mode
-		List<int> _switchableModes = new List<int>();
+		readonly List<int> _switchableModes = new List<int>();
 
 		void HotkeyKeyPressed(object sender, KeyPressedEventArgs e) {
-			if (e.Key == Keys.VolumeDown) {
-				_conn.SendMessage(new VolumeDown());
+			if (e.Modifier == KeyModifiers.None) {
+				// receiver zone 1
+				if (e.Key == Keys.VolumeDown) _conn.SendMessage(new VolumeDown());
+				else if (e.Key == Keys.VolumeUp) _conn.SendMessage(new VolumeUp());
 			}
-			else if (e.Key == Keys.VolumeUp) {
-				_conn.SendMessage(new VolumeUp());
+			else if (e.Modifier == KeyModifiers.Control) {
+				// system volume
+				const int APPCOMMAND_VOLUME_UP = 0xA0000;
+				const int APPCOMMAND_VOLUME_DOWN = 0x90000;
+				const int WM_APPCOMMAND = 0x319;
+
+				if (e.Key == Keys.VolumeDown) SendMessage(new HandleRef(this, Handle), WM_APPCOMMAND, this.Handle, (IntPtr)APPCOMMAND_VOLUME_DOWN);
+				else if (e.Key == Keys.VolumeUp) SendMessage(new HandleRef(this, Handle), WM_APPCOMMAND, this.Handle, (IntPtr)APPCOMMAND_VOLUME_UP);
+			}
+			else if (e.Modifier == (KeyModifiers.Control | KeyModifiers.Alt)) {
+				// receiver zone 2
+				if (e.Key == Keys.VolumeDown) _conn.SendMessage(new Z2VolumeDown());
+				else if (e.Key == Keys.VolumeUp) _conn.SendMessage(new Z2VolumeUp());
 			}
 		}
 		void DeviceUp(object sender, EventArgs e) {
@@ -79,20 +108,20 @@ namespace PioneerApplet {
 
 		private void ApplyTheme() {
 			this.BackgroundImage = _currentTheme.Background;
-			foreach (Control c in this.Controls) {
-				if (c is Label) {
-					c.ForeColor = _currentTheme.ForeColor;
-					c.BackColor = _currentTheme.BackColor;
-				}
+			foreach (Label c in this.Controls.OfType<Label>()) {
+				c.ForeColor = _currentTheme.ForeColor;
+				c.BackColor = _currentTheme.BackColor;
 			}
 			UpdateLcdScreen(this, EventArgs.Empty);
 		}
 
-		List<Timer> _timerRefs = new List<Timer>();
+		readonly List<Timer> _timerRefs = new List<Timer>();
 		public override void OnDeviceArrival(DeviceType deviceType) {
-			_conn.Open();
-			_conn.MessageReceived += conn_MessageReceived;
+			_conn.MessageReceived += MessageReceived;
+			_conn.Start();
+		}
 
+		private void ReadCurrentSettings() {
 			// obtain current status
 			_timerRefs.Add(new Timer(delegate {
 				_conn.SendMessage(new InputTypeRequest());
@@ -115,9 +144,9 @@ namespace PioneerApplet {
 			//conn.SendMessage(new TrebleRequest());
 		}
 
-		void conn_MessageReceived(object sender, PioneerAvrControlLib.MessageReceivedEventArgs e) {
+		void MessageReceived(object sender, PioneerAvrControlLib.MessageReceivedEventArgs e) {
 			if (InvokeRequired) {
-				this.BeginInvoke(new EventHandler<MessageReceivedEventArgs>(conn_MessageReceived), sender, e);
+				this.BeginInvoke(new EventHandler<MessageReceivedEventArgs>(MessageReceived), sender, e);
 				return;
 			}
 
@@ -168,7 +197,7 @@ namespace PioneerApplet {
 			UpdateLcdScreen(this, EventArgs.Empty);
 		}
 
-		public override event System.EventHandler UpdateLcdScreen;
+		public override event EventHandler UpdateLcdScreen;
 		public override string AppletName {
 			get { return "Pioneer Control"; }
 		}

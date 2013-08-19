@@ -8,9 +8,8 @@ namespace PioneerApplet {
 
 	/// <summary> Registers a window for some keyboard/broadcast hooks </summary>
 	public class PioneerHooks : IDisposable {
-
-		Device _device;
-		HookListenerWindow _hookListenerWindow = new HookListenerWindow();
+		readonly Device _device;
+		readonly HookListenerWindow _hookListenerWindow = new HookListenerWindow();
 		int _currentId;
 
 		public PioneerHooks(Device device) {
@@ -45,7 +44,7 @@ namespace PioneerApplet {
 		static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 		#endregion
 
-		Dictionary<KeyValuePair<KeyModifiers, Keys>, int> _registeredHotKeys =
+		readonly Dictionary<KeyValuePair<KeyModifiers, Keys>, int> _registeredHotKeys =
 			new Dictionary<KeyValuePair<KeyModifiers, Keys>, int>();
 
 		/// <summary>
