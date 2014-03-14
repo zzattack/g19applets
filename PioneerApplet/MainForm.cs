@@ -6,7 +6,7 @@ using PioneerAvrControlLib;
 using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
-using PioneerAvrControlLib.DataSources;
+using SPAA05.Shared.DataSources;
 using Timer = System.Threading.Timer;
 
 namespace PioneerApplet {

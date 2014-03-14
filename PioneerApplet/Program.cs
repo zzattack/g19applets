@@ -14,7 +14,7 @@ namespace PioneerApplet {
 		/// The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		static void Main() {
+		static void Main()  {
 			if (_mutex.WaitOne(TimeSpan.Zero, true)) {
 				Application.EnableVisualStyles();
 				try {

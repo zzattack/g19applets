@@ -1,11 +1,15 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PioneerApplet", "PioneerApplet.csproj", "{F5ECB23B-0993-423F-9A9E-FA2FD8B6E991}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LgLcd.NET", "..\..\Logitech-LCD\LgLcd.NET\LgLcd.NET.csproj", "{6A21C0D9-1024-4774-948B-A918042A5D38}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PioneerAvrControlLib", "..\..\pioneer-avr-lib\PioneerAvrControlLib\PioneerAvrControlLib.csproj", "{BEF5D89E-ACBF-4B82-96D0-6F5CAA8C8EBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPAA05.Shared", "..\..\..\UMTS\SPAA05 Library\SPAA05.Shared\SPAA05.Shared.csproj", "{DFC72919-A118-4D54-8792-541C20ED60CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,18 @@ Global
 		{BEF5D89E-ACBF-4B82-96D0-6F5CAA8C8EBC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{BEF5D89E-ACBF-4B82-96D0-6F5CAA8C8EBC}.Release|Win32.ActiveCfg = Release|Any CPU
 		{BEF5D89E-ACBF-4B82-96D0-6F5CAA8C8EBC}.Release|x86.ActiveCfg = Release|Any CPU
+		{DFC72919-A118-4D54-8792-541C20ED60CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFC72919-A118-4D54-8792-541C20ED60CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFC72919-A118-4D54-8792-541C20ED60CD}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DFC72919-A118-4D54-8792-541C20ED60CD}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DFC72919-A118-4D54-8792-541C20ED60CD}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{DFC72919-A118-4D54-8792-541C20ED60CD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DFC72919-A118-4D54-8792-541C20ED60CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFC72919-A118-4D54-8792-541C20ED60CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFC72919-A118-4D54-8792-541C20ED60CD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DFC72919-A118-4D54-8792-541C20ED60CD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DFC72919-A118-4D54-8792-541C20ED60CD}.Release|Win32.ActiveCfg = Release|Any CPU
+		{DFC72919-A118-4D54-8792-541C20ED60CD}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
