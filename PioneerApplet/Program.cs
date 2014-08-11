@@ -18,7 +18,7 @@ namespace PioneerApplet {
 			if (_mutex.WaitOne(TimeSpan.Zero, true)) {
 				Application.EnableVisualStyles();
 				try {
-					new MainForm();
+					var mf = new MainForm();
 					Application.Run();
 				}
 				catch (TypeInitializationException) {

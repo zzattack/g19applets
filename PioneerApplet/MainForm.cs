@@ -24,7 +24,8 @@ namespace PioneerApplet {
 			base.InitializeApplet();
 
 			Device.SetAsLCDForegroundApp(true);
-
+			UpdateLcdScreen(this, EventArgs.Empty);
+			 
 			if (!IsHandleCreated) CreateHandle();
 			_hotkey = new PioneerHooks(Device);
 			_hotkey.RegisterHotKey(KeyModifiers.None, Keys.VolumeUp);
@@ -49,8 +50,16 @@ namespace PioneerApplet {
 			_switchableModes.Add(0x0112); // EXTENDED STEREO
 			_switchableModes.Add(0x0109); // UNPLUGGED
 			_switchableModes.Add(0x0118); // ADVANCED GAME
+
+			// use a delayed timer in case the DeviceArrival event doesn't come up
+			this._t = new Timer(delegate {
+				_conn.Start();
+				this._t.Dispose();
+				this._t = null;
+			}, null, 3000000, -1);
 		}
 
+		private Timer _t;
 		readonly PioneerConnection _conn;
 		readonly PioneerHooks _hotkey;
 		InputType _lastInputType;
