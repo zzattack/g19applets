@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Globalization;
+using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
 using LgLcd;
@@ -34,6 +35,8 @@ namespace PioneerApplet {
 			_hotkey.RegisterHotKey(KeyModifiers.Control, Keys.VolumeDown);
 			_hotkey.RegisterHotKey(KeyModifiers.Control | KeyModifiers.Alt, Keys.VolumeUp);
 			_hotkey.RegisterHotKey(KeyModifiers.Control | KeyModifiers.Alt, Keys.VolumeDown);
+			_hotkey.RegisterHotKey(KeyModifiers.Control | KeyModifiers.Shift, Keys.P);
+			_hotkey.RegisterHotKey(KeyModifiers.Control | KeyModifiers.Shift, Keys.Q);
 			_hotkey.KeyPressed += HotkeyKeyPressed;
 
 			Device.Up += DeviceUp;
@@ -90,6 +93,16 @@ namespace PioneerApplet {
 				if (e.Key == Keys.VolumeDown) _conn.SendMessage(new Z2VolumeDown());
 				else if (e.Key == Keys.VolumeUp) _conn.SendMessage(new Z2VolumeUp());
 			}
+			else if (e.Modifier == (KeyModifiers.Control | KeyModifiers.Shift)) {
+				// send power toggle
+				if (e.Key == Keys.P) _conn.SendMessage(new PowerToggle());
+				else if (e.Key == Keys.Q) {
+					_conn.SendMessage(new PowerOff());
+					_conn.Dispose();
+					Disconnect(); // disconnect applet
+					Application.Exit();
+				}
+			}
 		}
 		void DeviceUp(object sender, EventArgs e) {
 			_conn.SendMessage(new InputTypeChangePrevious());
@@ -131,6 +144,10 @@ namespace PioneerApplet {
 		}
 
 		private void ReadCurrentSettings() {
+			_timerRefs.Add(new Timer(delegate {
+				_conn.SendMessage(new PowerOn());
+			}, null, new TimeSpan(100000), new TimeSpan(-1)));
+
 			// obtain current status
 			_timerRefs.Add(new Timer(delegate {
 				_conn.SendMessage(new InputTypeRequest());
@@ -147,13 +164,12 @@ namespace PioneerApplet {
 			_timerRefs.Add(new Timer(delegate {
 				_conn.SendMessage(new VolumeRequest());
 			}, null, new TimeSpan(400000), new TimeSpan(-1)));
-
-
+			
 			//conn.SendMessage(new BassRequest());
 			//conn.SendMessage(new TrebleRequest());
 		}
 
-		void MessageReceived(object sender, PioneerAvrControlLib.MessageReceivedEventArgs e) {
+		void MessageReceived(object sender, MessageReceivedEventArgs e) {
 			if (InvokeRequired) {
 				this.BeginInvoke(new EventHandler<MessageReceivedEventArgs>(MessageReceived), sender, e);
 				return;
@@ -193,7 +209,7 @@ namespace PioneerApplet {
 			}
 			else if (e.message.GetType() == typeof(TunerPresetResponse)) {
 				var msg = e.message as TunerPresetResponse;
-				string preset = msg.Class.ToString() + msg.Number.ToString();
+				string preset = msg.Class + msg.Number.ToString(CultureInfo.InvariantCulture);
 				if (_tunerPresetNames.ContainsKey(preset)) {
 					this.lblLine2.Text = _tunerPresetNames[preset];
 				}
@@ -201,7 +217,7 @@ namespace PioneerApplet {
 			else if (e.message.GetType() == typeof(ListeningModeResponse)) {
 				var msg = e.message as ListeningModeResponse;
 				_currentMode = (int)msg.ListeningMode;
-				this._lblLine3.Text = msg.ListeningModeString;
+				_lblLine3.Text = msg.ListeningModeString;
 			}
 			UpdateLcdScreen(this, EventArgs.Empty);
 		}
