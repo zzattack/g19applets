@@ -37,16 +37,12 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>pioneer.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -87,9 +83,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Pioneer-music-wallpapers.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\..\UMTS\SPAA05 Library\SPAA05.Shared\SPAA05.Shared.csproj">
       <Project>{DFC72919-A118-4D54-8792-541C20ED60CD}</Project>
       <Name>SPAA05.Shared</Name>
@@ -102,6 +95,10 @@
       <Project>{BEF5D89E-ACBF-4B82-96D0-6F5CAA8C8EBC}</Project>
       <Name>PioneerAvrControlLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="com.pioneer.carrozzeriaconnect-w250.ico" />
+    <Content Include="pioneer.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
