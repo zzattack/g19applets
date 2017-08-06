@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PioneerApplet", "PioneerApplet.csproj", "{F5ECB23B-0993-423F-9A9E-FA2FD8B6E991}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PioneerAppletG19", "PioneerAppletG19.csproj", "{F5ECB23B-0993-423F-9A9E-FA2FD8B6E991}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LgLcd.NET", "..\..\Logitech-LCD\LgLcd.NET\LgLcd.NET.csproj", "{6A21C0D9-1024-4774-948B-A918042A5D38}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PioneerAvrControlLib", "..\..\pioneer-avr-lib\PioneerAvrControlLib\PioneerAvrControlLib.csproj", "{BEF5D89E-ACBF-4B82-96D0-6F5CAA8C8EBC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPAA05.Shared", "..\..\..\UMTS\SPAA05 Library\SPAA05.Shared\SPAA05.Shared.csproj", "{DFC72919-A118-4D54-8792-541C20ED60CD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{EE3A2BD2-A996-48FE-88C0-215C672355B7}"
 	ProjectSection(SolutionItems) = preProject
@@ -17,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{EE3A2B
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PioneerAppletWin", "..\PioneerAppletWin\PioneerAppletWin.csproj", "{F4E5ECCE-618E-4227-87C5-E4BDE68653D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,18 +66,22 @@ Global
 		{BEF5D89E-ACBF-4B82-96D0-6F5CAA8C8EBC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{BEF5D89E-ACBF-4B82-96D0-6F5CAA8C8EBC}.Release|Win32.ActiveCfg = Release|Any CPU
 		{BEF5D89E-ACBF-4B82-96D0-6F5CAA8C8EBC}.Release|x86.ActiveCfg = Release|Any CPU
-		{DFC72919-A118-4D54-8792-541C20ED60CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFC72919-A118-4D54-8792-541C20ED60CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DFC72919-A118-4D54-8792-541C20ED60CD}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{DFC72919-A118-4D54-8792-541C20ED60CD}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{DFC72919-A118-4D54-8792-541C20ED60CD}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{DFC72919-A118-4D54-8792-541C20ED60CD}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{DFC72919-A118-4D54-8792-541C20ED60CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DFC72919-A118-4D54-8792-541C20ED60CD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DFC72919-A118-4D54-8792-541C20ED60CD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{DFC72919-A118-4D54-8792-541C20ED60CD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{DFC72919-A118-4D54-8792-541C20ED60CD}.Release|Win32.ActiveCfg = Release|Any CPU
-		{DFC72919-A118-4D54-8792-541C20ED60CD}.Release|x86.ActiveCfg = Release|Any CPU
+		{F4E5ECCE-618E-4227-87C5-E4BDE68653D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4E5ECCE-618E-4227-87C5-E4BDE68653D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4E5ECCE-618E-4227-87C5-E4BDE68653D5}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F4E5ECCE-618E-4227-87C5-E4BDE68653D5}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F4E5ECCE-618E-4227-87C5-E4BDE68653D5}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{F4E5ECCE-618E-4227-87C5-E4BDE68653D5}.Debug|Win32.Build.0 = Debug|Any CPU
+		{F4E5ECCE-618E-4227-87C5-E4BDE68653D5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F4E5ECCE-618E-4227-87C5-E4BDE68653D5}.Debug|x86.Build.0 = Debug|Any CPU
+		{F4E5ECCE-618E-4227-87C5-E4BDE68653D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4E5ECCE-618E-4227-87C5-E4BDE68653D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4E5ECCE-618E-4227-87C5-E4BDE68653D5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F4E5ECCE-618E-4227-87C5-E4BDE68653D5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F4E5ECCE-618E-4227-87C5-E4BDE68653D5}.Release|Win32.ActiveCfg = Release|Any CPU
+		{F4E5ECCE-618E-4227-87C5-E4BDE68653D5}.Release|Win32.Build.0 = Release|Any CPU
+		{F4E5ECCE-618E-4227-87C5-E4BDE68653D5}.Release|x86.ActiveCfg = Release|Any CPU
+		{F4E5ECCE-618E-4227-87C5-E4BDE68653D5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
